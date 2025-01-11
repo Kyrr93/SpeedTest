@@ -1,0 +1,132 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:SpeedTest.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+             x:Class="SpeedTest.Views.MainView"
+             x:DataType="vm:MainViewModel"
+             Background="{StaticResource BackgroundBrush}">
+	<Design.DataContext>
+		<vm:MainViewModel />
+	</Design.DataContext>
+
+	<Grid RowDefinitions="Auto,*,Auto" Margin="20">
+		<!-- Header -->
+		<TextBlock Grid.Row="0"
+                   Text="Internet Speed Test"
+                   Classes="header"/>
+
+		<!-- Main Content -->
+		<Grid Grid.Row="1"
+              RowDefinitions="*,Auto,Auto"
+              Margin="20">
+
+			<!-- Speedometers Container -->
+			<Grid Grid.Row="0" ColumnDefinitions="*,*">
+				<!-- Download Speedometer -->
+				<Border Grid.Column="0" Classes="speedometer">
+					<Canvas Width="300" Height="300">
+						<!-- Outer Circle -->
+						<Ellipse Width="300" Height="300"
+                                 Stroke="{StaticResource SurfaceBrush}"
+                                 StrokeThickness="10"/>
+
+						<!-- Speed Arc -->
+						<Arc StartAngle="-180"
+                             SweepAngle="180"
+                             Width="280"
+                             Height="280"
+                             Margin="10"
+                             Stroke="{Binding DownloadSpeed, Converter={StaticResource SpeedToColorConverter}}"
+                             StrokeThickness="10"/>
+
+						<!-- Center Content -->
+						<StackPanel Canvas.Left="75"
+                                  Canvas.Top="100"
+                                  Width="150">
+							<TextBlock Text="Download"
+                                     Classes="speed-label"/>
+							<TextBlock Text="{Binding DownloadSpeed, StringFormat='{}{0:F1}'}"
+                                     Classes="speed-value"/>
+							<TextBlock Text="Mbps"
+                                     Classes="speed-label"/>
+						</StackPanel>
+					</Canvas>
+				</Border>
+
+				<!-- Upload Speedometer -->
+				<Border Grid.Column="1" Classes="speedometer">
+					<Canvas Width="300" Height="300">
+						<!-- Outer Circle -->
+						<Ellipse Width="300" Height="300"
+                                 Stroke="{StaticResource SurfaceBrush}"
+                                 StrokeThickness="10"/>
+
+						<!-- Speed Arc -->
+						<Arc StartAngle="-180"
+                             SweepAngle="180"
+                             Width="280"
+                             Height="280"
+                             Margin="10"
+                             Stroke="{Binding UploadSpeed, Converter={StaticResource SpeedToColorConverter}}"
+                             StrokeThickness="10"/>
+
+						<!-- Center Content -->
+						<StackPanel Canvas.Left="75"
+                                  Canvas.Top="100"
+                                  Width="150">
+							<TextBlock Text="Upload"
+                                     Classes="speed-label"/>
+							<TextBlock Text="{Binding UploadSpeed, StringFormat='{}{0:F1}'}"
+                                     Classes="speed-value"/>
+							<TextBlock Text="Mbps"
+                                     Classes="speed-label"/>
+						</StackPanel>
+					</Canvas>
+				</Border>
+			</Grid>
+
+			<!-- Status and Progress -->
+			<StackPanel Grid.Row="1" Spacing="10" Margin="0,20">
+				<TextBlock Text="{Binding StatusMessage}"
+                         Classes="status"/>
+				<ProgressBar Value="{Binding Progress}"/>
+			</StackPanel>
+
+			<!-- Additional Info -->
+			<Grid Grid.Row="2"
+                  ColumnDefinitions="*,*"
+                  Margin="0,20">
+				<Border Grid.Column="0" Classes="info-panel">
+					<StackPanel HorizontalAlignment="Center">
+						<TextBlock Text="Ping"
+                                 Classes="speed-label"/>
+						<TextBlock Text="{Binding Ping}"
+                                 Classes="speed-value"/>
+						<TextBlock Text="ms"
+                                 Classes="speed-label"/>
+					</StackPanel>
+				</Border>
+
+				<Border Grid.Column="1" Classes="info-panel">
+					<StackPanel HorizontalAlignment="Center">
+						<TextBlock Text="Server"
+                                 Classes="speed-label"/>
+						<TextBlock Text="{Binding ServerLocation}"
+                                 Classes="speed-value"/>
+					</StackPanel>
+				</Border>
+			</Grid>
+		</Grid>
+
+		<!-- Footer with Start Button -->
+		<Button Grid.Row="2"
+                Content="{Binding ButtonText}"
+                Command="{Binding StartTestCommand}"
+                Classes="primary"
+                Width="200"
+                Height="50"
+                Margin="0,20,0,0"/>
+	</Grid>
+</UserControl>

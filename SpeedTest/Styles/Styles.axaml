@@ -1,0 +1,107 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+	<!-- Colors -->
+	<Style>
+		<Style.Resources>
+			<Color x:Key="PrimaryColor">#007AFF</Color>
+			<Color x:Key="SecondaryColor">#5856D6</Color>
+			<Color x:Key="BackgroundColor">#1C1C1E</Color>
+			<Color x:Key="SurfaceColor">#2C2C2E</Color>
+			<Color x:Key="AccentColor">#64D2FF</Color>
+			<Color x:Key="TextPrimaryColor">#FFFFFF</Color>
+			<Color x:Key="TextSecondaryColor">#AEAEB2</Color>
+
+			<SolidColorBrush x:Key="PrimaryBrush" Color="{StaticResource PrimaryColor}"/>
+			<SolidColorBrush x:Key="SecondaryBrush" Color="{StaticResource SecondaryColor}"/>
+			<SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+			<SolidColorBrush x:Key="SurfaceBrush" Color="{StaticResource SurfaceColor}"/>
+			<SolidColorBrush x:Key="AccentBrush" Color="{StaticResource AccentColor}"/>
+			<SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}"/>
+			<SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}"/>
+		</Style.Resources>
+	</Style>
+
+	<!-- Base Styles -->
+	<Style Selector="TextBlock">
+		<Setter Property="Foreground" Value="{StaticResource TextPrimaryBrush}"/>
+	</Style>
+
+	<!-- Header Style -->
+	<Style Selector="TextBlock.header">
+		<Setter Property="FontSize" Value="28"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="Margin" Value="0,20"/>
+	</Style>
+
+	<!-- Speedometer Value Style -->
+	<Style Selector="TextBlock.speed-value">
+		<Setter Property="FontSize" Value="48"/>
+		<Setter Property="FontWeight" Value="Bold"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+	</Style>
+
+	<!-- Speedometer Label Style -->
+	<Style Selector="TextBlock.speed-label">
+		<Setter Property="FontSize" Value="16"/>
+		<Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+	</Style>
+
+	<!-- Button Styles -->
+	<Style Selector="Button.primary">
+		<Setter Property="Background" Value="{StaticResource PrimaryBrush}"/>
+		<Setter Property="Foreground" Value="White"/>
+		<Setter Property="CornerRadius" Value="25"/>
+		<Setter Property="Padding" Value="20,10"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="VerticalAlignment" Value="Center"/>
+		<Setter Property="FontWeight" Value="SemiBold"/>
+	</Style>
+
+	<Style Selector="Button.primary:pointerover">
+		<Setter Property="Background" Value="{StaticResource SecondaryBrush}"/>
+		<Setter Property="Opacity" Value="0.9"/>
+	</Style>
+
+	<Style Selector="Button.primary:pressed">
+		<Setter Property="Background" Value="{StaticResource AccentBrush}"/>
+		<Setter Property="RenderTransform" Value="scale(0.98)"/>
+	</Style>
+
+	<!-- Progress Bar Style -->
+	<Style Selector="ProgressBar">
+		<Setter Property="Height" Value="4"/>
+		<Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+		<Setter Property="Foreground" Value="{StaticResource AccentBrush}"/>
+		<Setter Property="CornerRadius" Value="2"/>
+	</Style>
+
+	<!-- Info Panel Styles -->
+	<Style Selector="Border.info-panel">
+		<Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+		<Setter Property="BorderBrush" Value="{StaticResource PrimaryBrush}"/>
+		<Setter Property="BorderThickness" Value="1"/>
+		<Setter Property="CornerRadius" Value="10"/>
+		<Setter Property="Padding" Value="15"/>
+		<Setter Property="Margin" Value="5"/>
+	</Style>
+
+	<!-- Speedometer Container Style -->
+	<Style Selector="Border.speedometer">
+		<Setter Property="Background" Value="{StaticResource SurfaceBrush}"/>
+		<Setter Property="CornerRadius" Value="20"/>
+		<Setter Property="Padding" Value="20"/>
+		<Setter Property="Margin" Value="10"/>
+		<Setter Property="BoxShadow" Value="0 4 8 0 #0F0F0F"/>
+	</Style>
+
+	<!-- Status Message Style -->
+	<Style Selector="TextBlock.status">
+		<Setter Property="FontSize" Value="14"/>
+		<Setter Property="Foreground" Value="{StaticResource TextSecondaryBrush}"/>
+		<Setter Property="HorizontalAlignment" Value="Center"/>
+		<Setter Property="Margin" Value="0,10"/>
+	</Style>
+</Styles>

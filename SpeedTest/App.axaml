@@ -1,0 +1,20 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:SpeedTest"
+			 xmlns:converters="clr-namespace:SpeedTest.Converters"
+             x:Class="SpeedTest.App"
+             RequestedThemeVariant="Default">
+             <!-- "Default" ThemeVariant follows system theme variant. "Dark" or "Light" are other available options. -->
+
+    <Application.DataTemplates>
+        <local:ViewLocator/>
+    </Application.DataTemplates>
+
+	<Application.Resources>
+		<converters:SpeedToColorConverter x:Key="SpeedToColorConverter"/>
+	</Application.Resources>
+
+    <Application.Styles>
+        <FluentTheme />
+    </Application.Styles>
+</Application>
